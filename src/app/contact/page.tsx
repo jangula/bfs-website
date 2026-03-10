@@ -39,29 +39,37 @@ export default function ContactPage() {
                 </p>
               </InfoCard>
 
-              <InfoCard title="Direct Contact">
+              <InfoCard title="General & Funding">
                 <p>
-                  <strong>Phone:</strong>{' '}
-                  <a href="tel:+26461388600" className="text-teal hover:underline">
-                    +264 61 388600
-                  </a>
-                </p>
-                <p>
-                  <strong>Email:</strong>{' '}
                   <a href="mailto:admin@bfs.com.na" className="text-teal hover:underline">
                     admin@bfs.com.na
                   </a>
                 </p>
+                <p className="text-slate text-sm">
+                  General inquiries, funding applications, and partnership requests.
+                </p>
               </InfoCard>
 
-              <InfoCard title="Inquiry Routing">
-                <ul>
-                  <li><strong>Investment:</strong> Routed to the Investment Management team</li>
-                  <li><strong>Entrepreneur:</strong> Routed to Enterprise Development</li>
-                  <li><strong>Advisory:</strong> Routed to Consulting &amp; Energy Advisory</li>
-                  <li><strong>Partnership:</strong> Routed to Strategic Partnerships</li>
-                  <li><strong>Career:</strong> Routed to Human Resources</li>
-                </ul>
+              <InfoCard title="Advisory Clients">
+                <p>
+                  <a href="mailto:raili@bfs.com.na" className="text-teal hover:underline">
+                    raili@bfs.com.na
+                  </a>
+                </p>
+                <p className="text-slate text-sm">
+                  Consulting, energy advisory, and transaction support services.
+                </p>
+              </InfoCard>
+
+              <InfoCard title="Investors">
+                <p>
+                  <a href="mailto:anna@bfs.com.na" className="text-teal hover:underline">
+                    anna@bfs.com.na
+                  </a>
+                </p>
+                <p className="text-slate text-sm">
+                  Investment opportunities, fund performance, and investor relations.
+                </p>
               </InfoCard>
 
               <InfoCard title="Response Times">

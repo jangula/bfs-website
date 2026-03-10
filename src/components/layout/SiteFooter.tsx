@@ -84,24 +84,24 @@ export default function SiteFooter() {
             <ul className="space-y-2.5 text-white/60 text-sm">
               <li>
                 <a
-                  href="tel:+27123456789"
+                  href="tel:+26461388600"
                   className="hover:text-white transition-colors duration-200"
                 >
-                  +27 12 345 6789
+                  +264 61 388600
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:info@bfs.co.za"
+                  href="mailto:admin@bfs.com.na"
                   className="hover:text-white transition-colors duration-200"
                 >
-                  info@bfs.co.za
+                  admin@bfs.com.na
                 </a>
               </li>
               <li className="leading-relaxed">
-                Pretoria, Gauteng
+                10 Axali Doeseb Street
                 <br />
-                South Africa
+                Windhoek, Namibia
               </li>
             </ul>
           </div>

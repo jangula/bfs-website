@@ -13,10 +13,38 @@ type InquiryType =
 export default function ContactForm() {
   const [inquiryType, setInquiryType] = useState<InquiryType>('investment');
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+    setError('');
+
+    const formData = new FormData(e.currentTarget);
+    const data: Record<string, string> = {};
+    formData.forEach((value, key) => {
+      data[key] = value.toString();
+    });
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) {
+        const json = await res.json();
+        throw new Error(json.error || 'Failed to send');
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+    } finally {
+      setSending(false);
+    }
   };
 
   const handleInquiryChange = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -245,16 +273,19 @@ export default function ContactForm() {
             type="submit"
             className="inline-flex items-center justify-center gap-2 rounded-full border-0 cursor-pointer font-semibold px-6 py-[0.82rem] text-[0.92rem] tracking-[-0.01em] transition-all duration-[250ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] bg-gradient-to-br from-teal to-teal-dark text-white shadow-[0_8px_32px_rgba(0,150,136,0.18)] hover:-translate-y-[2px] hover:shadow-[0_12px_40px_rgba(0,150,136,0.28)]"
           >
-            Submit Inquiry
+            {sending ? 'Sending...' : 'Submit Inquiry'}
           </button>
         </div>
 
         {/* Success message */}
         {submitted && (
           <div className="mt-[0.8rem] px-4 py-[0.8rem] rounded-xs bg-[#e4f7f1] text-[#0a7b64] text-[0.88rem] font-medium">
-            Thank you for your inquiry. In production, this would be routed to
-            the relevant BFS team with SLA tracking and an automatic
-            acknowledgement email.
+            Thank you for your inquiry. Our team will respond within 24 hours.
+          </div>
+        )}
+        {error && (
+          <div className="mt-[0.8rem] px-4 py-[0.8rem] rounded-xs bg-[#fbe5e0] text-[#ab4029] text-[0.88rem] font-medium">
+            {error}
           </div>
         )}
       </form>
