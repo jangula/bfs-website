@@ -22,6 +22,12 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'bio',
+      title: 'Bio',
+      type: 'text',
+      rows: 4,
+    }),
+    defineField({
       name: 'photo',
       title: 'Photo',
       type: 'image',

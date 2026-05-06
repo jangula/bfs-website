@@ -14,24 +14,34 @@ export const metadata: Metadata = {
 
 const teamMembers = [
   {
-    initials: 'MD',
+    initials: 'KN',
+    name: 'Kauna Ndilula',
+    role: 'Executive Chairperson',
+    bio: 'Executive Chairperson of the BFS Group of Companies, providing governance and strategic leadership across the firm’s investment management, advisory, and venture-building activities.',
+  },
+  {
+    initials: 'AK',
+    name: 'Anna Kangombe',
     role: 'Managing Director',
-    description: 'Strategic leadership and stakeholder relations',
+    bio: 'PhD in Public and Development Management (Stellenbosch). 21+ years across private investment, public sector development cooperation, and academia. Has led BFS as Managing Director since 2020, driving market expansion and the development of eight investment funds.',
   },
   {
-    initials: 'CIO',
+    initials: 'CvD',
+    name: 'Christina von Doderer',
     role: 'Chief Investment Officer',
-    description: 'Portfolio management and investment strategy',
+    bio: 'MBA, Munich. Investment professional with c.20 years executing equity, debt, and M&A transactions in Europe and Africa, formerly Director at GE Capital. Leads BFS’ >N$300m mandate from a German multi-family office and helped launch the Namibia Innovation !Hub.',
   },
   {
-    initials: 'CFO',
-    role: 'Chief Financial Officer',
-    description: 'Financial governance and fund reporting',
+    initials: 'TK',
+    name: 'Theopolina Kapani-Emvula',
+    role: 'Chief Executive Officer, BFS Fund Manager',
+    bio: 'Civil engineer and project finance advisor with deep experience across infrastructure, oil & gas, and transportation sectors. Has delivered projects for Shell, BP, Vodafone, and Deutsche Telekom across Europe and lectured at the Namibia University of Science and Technology.',
   },
   {
-    initials: 'COO',
-    role: 'Chief Operating Officer',
-    description: 'Operations excellence and programme delivery',
+    initials: 'AH',
+    name: 'Alushe T. Hitula',
+    role: 'Consulting Head of Advisory',
+    bio: 'MPhil in Business Management (Pretoria); PhD candidate in Sustainable Blue Economy Development. 22+ years of consulting and leadership across SADC for FAO, NEPAD/AU, the SADC Secretariat, AfDB, and WWF. Sits on BFS EXCO and leads expansion into Mozambique and Southern Africa.',
   },
 ];
 
@@ -46,8 +56,9 @@ export default async function AboutPage() {
       ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
         sanityTeam.map((m: any) => ({
           initials: m.initials,
+          name: m.name,
           role: m.role,
-          description: m.name || m.role,
+          bio: m.bio,
         }))
       : teamMembers;
 
@@ -168,20 +179,29 @@ export default async function AboutPage() {
               investment and advisory.
             </p>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
             {team.map((member: any) => (
               <div
-                key={member.initials}
+                key={member.name || member.initials}
                 className="flex flex-col items-center rounded-xl border border-[#d6d1c9] bg-white p-6 text-center shadow-[var(--shadow-sm)] transition-shadow duration-300 hover:shadow-[var(--shadow-md)]"
               >
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-navy to-navy-mid text-sm font-bold text-white">
                   {member.initials}
                 </div>
-                <h4 className="mt-4 font-heading text-base font-bold text-ink">
-                  {member.role}
-                </h4>
-                <p className="mt-2 text-sm leading-relaxed text-slate">{member.description}</p>
+                {member.name && (
+                  <h4 className="mt-4 font-heading text-base font-bold text-ink">
+                    {member.name}
+                  </h4>
+                )}
+                {member.role && (
+                  <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-teal">
+                    {member.role}
+                  </p>
+                )}
+                {member.bio && (
+                  <p className="mt-3 text-sm leading-relaxed text-slate">{member.bio}</p>
+                )}
               </div>
             ))}
           </div>
