@@ -18,7 +18,7 @@
     "react": "^19",
     "react-dom": "^19",
     "resend": "^6.16.0",
-    "sanity": "^3.99.0",
+    "sanity": "^6.2.0",
     "styled-components": "^6.4.3"
   },
   "devDependencies": {
